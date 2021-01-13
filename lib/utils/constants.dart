@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // TEXT
 
-const kTextColor = Color(0xffBFBFBF);
+const kTextColor = Color(0xffCCCCCC);
 const kDefaultTextTheme = TextStyle(
   color: kTextColor,
   fontFamily: 'Inter',
