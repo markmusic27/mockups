@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mockups/pages/homePage.dart';
+import 'package:mockups/utils/constants.dart';
 
 void main() {
   runApp(MockupsApp());
@@ -11,9 +12,8 @@ class MockupsApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         textTheme: TextTheme(
-            headline1: TextStyle(
-          color: Colors.black,
-        )),
+          headline1: kDefaultTextTheme,
+        ),
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: HomePage.id,
