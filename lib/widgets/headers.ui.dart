@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mockups/widgets/headerWithSubheader.ui.dart';
 import 'package:mockups/widgets/topButtons.ui.dart';
 
 class Headers extends StatelessWidget {
@@ -11,11 +12,7 @@ class Headers extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TopButtons(),
-          Container(
-            height: 100,
-            width: 100,
-            color: Colors.green,
-          ),
+          HeaderWithSubheader(),
           SizedBox(),
         ],
       ),

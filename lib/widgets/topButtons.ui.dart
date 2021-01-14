@@ -6,6 +6,7 @@ class TopButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TopIconWithText(type: Type.overlay),
           SizedBox(width: 45),

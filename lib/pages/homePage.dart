@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mockups/utils/constants.dart';
-import 'package:mockups/widgets/backgroundGradient.ui.dart';
 import 'package:mockups/widgets/headers.ui.dart';
 import 'package:mockups/widgets/selector.ui.dart';
 
@@ -15,15 +14,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      body: BackgroundGradient(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Headers(),
-            Selector(),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Headers(),
+          Selector(),
+        ],
       ),
     );
   }

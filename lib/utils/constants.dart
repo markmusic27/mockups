@@ -7,10 +7,15 @@ const kDefaultTextTheme = TextStyle(
   color: kTextColor,
   fontFamily: 'Inter',
 );
+const kSubheader = TextStyle(
+  color: kTextColor,
+  fontFamily: 'Inter',
+  fontSize: 23,
+);
 
 // COLORS
 
-const kBackgroundColor = Color(0xff171717);
+const kBackgroundColor = Colors.black;
 
 // GRADIENTS
 
