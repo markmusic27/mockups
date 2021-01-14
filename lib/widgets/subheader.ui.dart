@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:mockups/services/mapGradient.service.dart';
 import 'package:mockups/utils/constants.dart';
 
 class Subheader extends StatefulWidget {
@@ -6,17 +10,45 @@ class Subheader extends StatefulWidget {
   _SubheaderState createState() => _SubheaderState();
 }
 
-class _SubheaderState extends State<Subheader> {
-  Shader linearGradient;
+class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
+  AnimationController controller;
+  Animation animation1;
+  Animation animation2;
+  int currentImage = 3;
+  List<Color> colors;
+  void animate() {
+    List<Color> fromPointer = MapGradient.generateColors(currentImage);
+    List<Color> toPointer = MapGradient.generateColors(currentImage - 1);
+
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 1000),
+    );
+
+    animation1 = ColorTween(begin: fromPointer[0], end: toPointer[0])
+        .animate(controller);
+    animation2 = ColorTween(begin: fromPointer[1], end: toPointer[1])
+        .animate(controller);
+
+    controller.forward(from: 0);
+
+    controller.addListener(() {
+      setState(() {
+        colors = <Color>[animation1.value, animation2.value];
+      });
+    });
+  }
 
   @override
   void initState() {
-    linearGradient = LinearGradient(
-      colors: <Color>[Color(0xff1583EC), Color(0xff26DDD8)],
-    ).createShader(
-      Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
-    );
+    animate();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -30,7 +62,12 @@ class _SubheaderState extends State<Subheader> {
         SelectableText(
           '4k',
           style: kSubheader.copyWith(
-            foreground: Paint()..shader = linearGradient,
+            foreground: Paint()
+              ..shader = LinearGradient(
+                colors: colors ?? MapGradient.generateColors(currentImage),
+              ).createShader(
+                Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+              ),
           ),
         ),
         SelectableText(' device mockups.', style: kSubheader),

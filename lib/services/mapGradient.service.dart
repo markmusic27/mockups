@@ -39,4 +39,15 @@ class MapGradient {
         break;
     }
   }
+
+  static List<Color> generateColors(int currentImg) {
+    int value;
+    if (currentImg.toString().length == 1) {
+      value = currentImg;
+    } else {
+      value = int.parse(currentImg.toString()[1]);
+    }
+
+    return map(value);
+  }
 }

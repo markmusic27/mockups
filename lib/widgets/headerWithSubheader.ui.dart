@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mockups/services/mapGradient.service.dart';
-import 'package:mockups/utils/constants.dart';
 import 'package:mockups/widgets/subheader.ui.dart';
 
 class HeaderWithSubheader extends StatefulWidget {
@@ -8,22 +7,46 @@ class HeaderWithSubheader extends StatefulWidget {
   _HeaderWithSubheaderState createState() => _HeaderWithSubheaderState();
 }
 
-class _HeaderWithSubheaderState extends State<HeaderWithSubheader> {
-  int currentPage = 0;
+class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
+    with TickerProviderStateMixin {
+  AnimationController controller;
+  Animation animation1;
+  Animation animation2;
+  int currentImage = 3;
+  List<Color> colors;
+  void animate() {
+    List<Color> fromPointer = MapGradient.generateColors(currentImage);
+    List<Color> toPointer = MapGradient.generateColors(currentImage - 1);
+
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 1000),
+    );
+
+    animation1 = ColorTween(begin: fromPointer[0], end: toPointer[0])
+        .animate(controller);
+    animation2 = ColorTween(begin: fromPointer[1], end: toPointer[1])
+        .animate(controller);
+
+    controller.forward(from: 0);
+
+    controller.addListener(() {
+      setState(() {
+        colors = <Color>[animation1.value, animation2.value];
+      });
+    });
+  }
+
   @override
   void initState() {
+    animate();
     super.initState();
   }
 
-  List<Color> generateColors() {
-    int value;
-    if (currentPage.toString().length == 1) {
-      value = currentPage;
-    } else {
-      value = int.parse(currentPage.toString()[1]);
-    }
-
-    return MapGradient.map(value);
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -37,7 +60,7 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader> {
               fontFamily: 'Inter',
               foreground: Paint()
                 ..shader = LinearGradient(
-                  colors: generateColors(),
+                  colors: colors ?? MapGradient.generateColors(currentImage),
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                 ).createShader(Rect.fromLTWH(0.0, 0.0, 500.0, 500.0)),
