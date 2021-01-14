@@ -19,11 +19,6 @@ const kBackgroundColor = Colors.black;
 
 // GRADIENTS
 
-const kBackgroundGradient = LinearGradient(
-  colors: [
-    Color(0xff171717),
-    Color(0xff0A0A0A),
-  ],
-  begin: Alignment.topLeft,
-  end: Alignment.bottomRight,
-);
+const kGradientPair1 = [Color(0xff106FC9), Color(0xff14FCF5)];
+const kGradientPair2 = [Color(0xff106FC9), Color(0xff14FCF5)];
+const kGradientPair3 = [Color(0xff106FC9), Color(0xff14FCF5)];

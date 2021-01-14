@@ -1,14 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:mockups/services/mapGradient.service.dart';
+import 'package:mockups/utils/constants.dart';
 import 'package:mockups/widgets/subheader.ui.dart';
 
-class HeaderWithSubheader extends StatelessWidget {
+class HeaderWithSubheader extends StatefulWidget {
+  @override
+  _HeaderWithSubheaderState createState() => _HeaderWithSubheaderState();
+}
+
+class _HeaderWithSubheaderState extends State<HeaderWithSubheader> {
+  int currentPage = 0;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  List<Color> generateColors() {
+    int value;
+    if (currentPage.toString().length == 1) {
+      value = currentPage;
+    } else {
+      value = int.parse(currentPage.toString()[1]);
+    }
+
+    return MapGradient.map(value);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final Shader linearGradient = LinearGradient(
-      colors: <Color>[Color(0xff1583EC), Color(0xff26DDD8)],
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-    ).createShader(Rect.fromLTWH(0.0, 0.0, 500.0, 500.0));
     return Container(
       child: Column(
         children: [
@@ -16,7 +35,12 @@ class HeaderWithSubheader extends StatelessWidget {
             'mockups.li',
             style: TextStyle(
               fontFamily: 'Inter',
-              foreground: Paint()..shader = linearGradient,
+              foreground: Paint()
+                ..shader = LinearGradient(
+                  colors: generateColors(),
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                ).createShader(Rect.fromLTWH(0.0, 0.0, 500.0, 500.0)),
               fontSize: 60,
               fontWeight: FontWeight.w800,
             ),
