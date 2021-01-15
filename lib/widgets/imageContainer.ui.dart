@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mockups/services/image.service.dart';
 
 class ImageContainer extends StatelessWidget {
   final int index;
@@ -9,15 +10,18 @@ class ImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print(index);
+        ImageService().download(index);
       },
       child: Container(
         padding: EdgeInsets.all(20),
         height: double.infinity,
         width: double.infinity,
-        child: Text(index.toString()),
         decoration: BoxDecoration(
-          color: Colors.green,
+          color: Colors.grey[900],
+          image: DecorationImage(
+            image: ImageService.display(index),
+            fit: BoxFit.cover,
+          ),
           borderRadius: BorderRadius.circular(20),
         ),
       ),
