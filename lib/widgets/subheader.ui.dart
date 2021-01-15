@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:mockups/services/mapGradient.service.dart';
 import 'package:mockups/utils/constants.dart';
@@ -22,7 +19,7 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
 
     controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1000),
+      duration: Duration(seconds: 1),
     );
 
     animation1 = ColorTween(begin: fromPointer[0], end: toPointer[0])
