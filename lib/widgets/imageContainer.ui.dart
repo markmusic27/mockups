@@ -19,7 +19,7 @@ class ImageContainer extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.grey[900],
           image: DecorationImage(
-            image: ImageService.display(index),
+            image: ImageService.display(index + 1),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(20),
