@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mockups/services/mapGradient.service.dart';
+import 'package:mockups/state/imageCount_store.dart';
 import 'package:mockups/widgets/subheader.ui.dart';
 
 class HeaderWithSubheader extends StatefulWidget {
@@ -12,9 +14,10 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
   AnimationController controller;
   Animation animation1;
   Animation animation2;
-  int currentImage = 3;
+  final ImagecountStore imagecountStore = ImagecountStore();
+
   List<Color> colors;
-  void animate() {
+  void animate(int currentImage) {
     List<Color> fromPointer = MapGradient.generateColors(currentImage);
     List<Color> toPointer = MapGradient.generateColors(currentImage - 1);
 
@@ -39,7 +42,6 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
 
   @override
   void initState() {
-    animate();
     super.initState();
   }
 
@@ -54,22 +56,31 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
     return Container(
       child: Column(
         children: [
-          SelectableText(
-            'mockups.li',
-            style: TextStyle(
-              fontFamily: 'Inter',
-              foreground: Paint()
-                ..shader = LinearGradient(
-                  colors: colors ?? MapGradient.generateColors(currentImage),
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                ).createShader(Rect.fromLTWH(0.0, 0.0, 500.0, 500.0)),
-              fontSize: 60,
-              fontWeight: FontWeight.w800,
-            ),
+          Observer(
+            builder: (_) {
+              print("here");
+              print(imagecountStore.imageCount);
+              animate(imagecountStore.imageCount);
+              return SelectableText(
+                'mockups.li',
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  foreground: Paint()
+                    ..shader = LinearGradient(
+                      colors: colors ??
+                          MapGradient.generateColors(
+                              imagecountStore.imageCount),
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ).createShader(Rect.fromLTWH(0.0, 0.0, 500.0, 500.0)),
+                  fontSize: 60,
+                  fontWeight: FontWeight.w800,
+                ),
+              );
+            },
           ),
           SizedBox(height: 20),
-          Subheader()
+          Subheader(imageCount: imagecountStore.imageCount),
         ],
       ),
     );

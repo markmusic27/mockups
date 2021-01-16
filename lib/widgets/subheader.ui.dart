@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mockups/services/mapGradient.service.dart';
+import 'package:mockups/state/imageCount_store.dart';
 import 'package:mockups/utils/constants.dart';
 
 class Subheader extends StatefulWidget {
+  final int imageCount;
+
+  Subheader({this.imageCount});
   @override
   _SubheaderState createState() => _SubheaderState();
 }
@@ -11,9 +16,9 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
   AnimationController controller;
   Animation animation1;
   Animation animation2;
-  int currentImage = 3;
+
   List<Color> colors;
-  void animate() {
+  void animate(int currentImage) {
     List<Color> fromPointer = MapGradient.generateColors(currentImage);
     List<Color> toPointer = MapGradient.generateColors(currentImage - 1);
 
@@ -38,7 +43,6 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    animate();
     super.initState();
   }
 
@@ -56,16 +60,22 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
       crossAxisAlignment: CrossAxisAlignment.baseline,
       children: [
         SelectableText('An online repository of ', style: kSubheader),
-        SelectableText(
-          '4k',
-          style: kSubheader.copyWith(
-            foreground: Paint()
-              ..shader = LinearGradient(
-                colors: colors ?? MapGradient.generateColors(currentImage),
-              ).createShader(
-                Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+        Observer(
+          builder: (_) {
+            animate(widget.imageCount);
+            return SelectableText(
+              '4k',
+              style: kSubheader.copyWith(
+                foreground: Paint()
+                  ..shader = LinearGradient(
+                    colors:
+                        colors ?? MapGradient.generateColors(widget.imageCount),
+                  ).createShader(
+                    Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+                  ),
               ),
-          ),
+            );
+          },
         ),
         SelectableText(' device mockups.', style: kSubheader),
       ],
