@@ -12,6 +12,9 @@ class Selector extends StatelessWidget {
         padding: EdgeInsets.only(bottom: 20),
         child: Swiper(
           control: SwiperControl(
+            onTap: () {
+              print('clicked');
+            },
             size: 30,
             iconNext: Icons.arrow_forward_ios_rounded,
             iconPrevious: Icons.arrow_back_ios_rounded,

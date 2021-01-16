@@ -1,6 +1,6 @@
 {
     "name": "mockups.ly",
-    "short_name": "mockups",
+    "short_name": "mockups.ly",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

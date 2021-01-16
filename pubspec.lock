@@ -231,9 +231,11 @@ packages:
   flutter_swiper:
     dependency: "direct main"
     description:
-      name: flutter_swiper
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: bd2cbed524033b9441274ce96b169b7b835a960a
+      url: "https://github.com/markmusic2727/flutter_swiper"
+    source: git
     version: "1.1.6"
   flutter_test:
     dependency: "direct dev"
