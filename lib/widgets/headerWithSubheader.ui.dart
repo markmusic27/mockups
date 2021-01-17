@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mockups/services/mapGradient.service.dart';
-import 'package:mockups/state/imageCount_store.dart';
+import 'package:mockups/state/imageCount.store.dart';
 import 'package:mockups/widgets/subheader.ui.dart';
+import 'package:provider/provider.dart';
 
 class HeaderWithSubheader extends StatefulWidget {
   @override
@@ -14,7 +15,6 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
   AnimationController controller;
   Animation animation1;
   Animation animation2;
-  final ImagecountStore imagecountStore = ImagecountStore();
 
   List<Color> colors;
   void animate(int currentImage) {
@@ -53,23 +53,20 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
 
   @override
   Widget build(BuildContext context) {
+    final imageCountStore = Provider.of<ImageCountStore>(context);
     return Container(
       child: Column(
         children: [
           Observer(
             builder: (_) {
-              print("here");
-              print(imagecountStore.imageCount);
-              animate(imagecountStore.imageCount);
+              animate(imageCountStore.imageCount);
               return SelectableText(
                 'mockups.li',
                 style: TextStyle(
                   fontFamily: 'Inter',
                   foreground: Paint()
                     ..shader = LinearGradient(
-                      colors: colors ??
-                          MapGradient.generateColors(
-                              imagecountStore.imageCount),
+                      colors: colors ?? MapGradient.generateColors(2),
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                     ).createShader(Rect.fromLTWH(0.0, 0.0, 500.0, 500.0)),
@@ -80,7 +77,7 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
             },
           ),
           SizedBox(height: 20),
-          Subheader(imageCount: imagecountStore.imageCount),
+          Subheader(),
         ],
       ),
     );

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mockups/services/mapGradient.service.dart';
-import 'package:mockups/state/imageCount_store.dart';
+import 'package:mockups/state/imageCount.store.dart';
 import 'package:mockups/utils/constants.dart';
+import 'package:provider/provider.dart';
 
 class Subheader extends StatefulWidget {
-  final int imageCount;
-
-  Subheader({this.imageCount});
   @override
   _SubheaderState createState() => _SubheaderState();
 }
@@ -54,6 +52,7 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final imageCountStore = Provider.of<ImageCountStore>(context);
     return Row(
       textBaseline: TextBaseline.alphabetic,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -62,14 +61,14 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
         SelectableText('An online repository of ', style: kSubheader),
         Observer(
           builder: (_) {
-            animate(widget.imageCount);
+            animate(imageCountStore.imageCount);
             return SelectableText(
-              '4k',
+              '${imageCountStore.imageCount}',
               style: kSubheader.copyWith(
                 foreground: Paint()
                   ..shader = LinearGradient(
-                    colors:
-                        colors ?? MapGradient.generateColors(widget.imageCount),
+                    colors: colors ??
+                        MapGradient.generateColors(imageCountStore.imageCount),
                   ).createShader(
                     Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
                   ),
