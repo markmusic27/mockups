@@ -14,20 +14,21 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
   AnimationController controller;
   Animation animation1;
   Animation animation2;
+  int pointer = 0;
+  List<Color> colors = MapGradient.generateColors(1);
 
-  List<Color> colors;
   void animate(int currentImage) {
-    print("here");
     List<Color> fromPointer = MapGradient.generateColors(currentImage);
-    List<Color> toPointer = MapGradient.generateColors(currentImage - 1);
+    List<Color> toPointer = MapGradient.generateColors(currentImage + 1);
 
     controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: Duration(milliseconds: 200),
     );
 
     animation1 = ColorTween(begin: fromPointer[0], end: toPointer[0])
         .animate(controller);
+
     animation2 = ColorTween(begin: fromPointer[1], end: toPointer[1])
         .animate(controller);
 
@@ -62,13 +63,18 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
         SelectableText('An online repository of ', style: kSubheader),
         Observer(
           builder: (_) {
+            if (pointer != imageCountStore.imageCount) {
+              animate(imageCountStore.imageCount);
+            }
+
+            pointer = imageCountStore.imageCount;
+
             return SelectableText(
               '4k',
               style: kSubheader.copyWith(
                 foreground: Paint()
                   ..shader = LinearGradient(
-                    colors: colors ??
-                        MapGradient.generateColors(imageCountStore.imageCount),
+                    colors: colors,
                   ).createShader(
                     Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
                   ),

@@ -15,19 +15,21 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
   AnimationController controller;
   Animation animation1;
   Animation animation2;
+  int pointer = 0;
 
-  List<Color> colors;
+  List<Color> colors = MapGradient.generateColors(1);
   void animate(int currentImage) {
     List<Color> fromPointer = MapGradient.generateColors(currentImage);
-    List<Color> toPointer = MapGradient.generateColors(currentImage - 1);
+    List<Color> toPointer = MapGradient.generateColors(currentImage + 1);
 
     controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1000),
+      duration: Duration(milliseconds: 200),
     );
 
     animation1 = ColorTween(begin: fromPointer[0], end: toPointer[0])
         .animate(controller);
+
     animation2 = ColorTween(begin: fromPointer[1], end: toPointer[1])
         .animate(controller);
 
@@ -59,17 +61,22 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
         children: [
           Observer(
             builder: (_) {
-              animate(imageCountStore.imageCount);
+              if (pointer != imageCountStore.imageCount) {
+                animate(imageCountStore.imageCount);
+              }
+
+              pointer = imageCountStore.imageCount;
+
               return SelectableText(
                 'mockups.li',
                 style: TextStyle(
                   fontFamily: 'Inter',
                   foreground: Paint()
                     ..shader = LinearGradient(
-                      colors: colors ?? MapGradient.generateColors(2),
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                    ).createShader(Rect.fromLTWH(0.0, 0.0, 500.0, 500.0)),
+                      colors: colors,
+                    ).createShader(
+                      Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+                    ),
                   fontSize: 60,
                   fontWeight: FontWeight.w800,
                 ),
