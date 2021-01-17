@@ -52837,7 +52837,7 @@ if(q!==p.a){n.hE(o)
 r.vl(0,p.a)}n.hE(o)
 r.r=p.a
 q=new H.aH(new H.aL())
-q.snZ(new T.iG(C.oS,C.lu,C.eR,r.x,s,s).F5(0,new P.t(0,0,200,70)))
+q.snZ(new T.iG(C.oS,C.lu,C.eR,r.x,s,s).F5(0,new P.t(0,0,0,0)))
 return O.S4("mockups.li",A.ns(s,s,s,s,s,s,s,s,"Inter",s,s,60,s,C.pO,q,s,!0,s,s,s,s,s,s))},
 $S:67}
 M.vH.prototype={
@@ -52909,7 +52909,7 @@ if(r!==q.a){o.hE(p)
 s.vl(0,q.a)}o.hE(p)
 s.r=q.a
 r=new H.aH(new H.aL())
-r.snZ(new T.iG(C.oS,C.lu,C.eR,s.x,null,null).F5(0,new P.t(0,0,200,70)))
+r.snZ(new T.iG(C.oS,C.lu,C.eR,s.x,null,null).F5(0,new P.t(0,0,0,0)))
 return O.S4("4k",C.oi.VC(r))},
 $S:67}
 V.vL.prototype={

@@ -76,7 +76,7 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
                   ..shader = LinearGradient(
                     colors: colors,
                   ).createShader(
-                    Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+                    Rect.fromLTWH(0.0, 0.0, 0.0, 0.0),
                   ),
               ),
             );

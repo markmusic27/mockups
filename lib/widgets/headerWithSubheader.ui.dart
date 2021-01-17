@@ -75,7 +75,7 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
                     ..shader = LinearGradient(
                       colors: colors,
                     ).createShader(
-                      Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+                      Rect.fromLTWH(0, 0, 0, 0),
                     ),
                   fontSize: 60,
                   fontWeight: FontWeight.w800,
