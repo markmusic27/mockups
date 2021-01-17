@@ -73,7 +73,7 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
                   fontFamily: 'Inter',
                   color: colors[1],
                   fontSize: 60,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                 ),
               );
             },
