@@ -71,12 +71,7 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
                 'mockups.li',
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  foreground: Paint()
-                    ..shader = LinearGradient(
-                      colors: colors,
-                    ).createShader(
-                      Rect.fromLTWH(0, 0, 0, 0),
-                    ),
+                  color: colors[1],
                   fontSize: 60,
                   fontWeight: FontWeight.w800,
                 ),

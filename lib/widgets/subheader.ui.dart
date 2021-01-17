@@ -72,12 +72,7 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
             return SelectableText(
               '4k',
               style: kSubheader.copyWith(
-                foreground: Paint()
-                  ..shader = LinearGradient(
-                    colors: colors,
-                  ).createShader(
-                    Rect.fromLTWH(0.0, 0.0, 0.0, 0.0),
-                  ),
+                color: colors[1],
               ),
             );
           },
