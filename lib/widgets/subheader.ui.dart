@@ -17,6 +17,7 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
 
   List<Color> colors;
   void animate(int currentImage) {
+    print("here");
     List<Color> fromPointer = MapGradient.generateColors(currentImage);
     List<Color> toPointer = MapGradient.generateColors(currentImage - 1);
 
@@ -61,9 +62,8 @@ class _SubheaderState extends State<Subheader> with TickerProviderStateMixin {
         SelectableText('An online repository of ', style: kSubheader),
         Observer(
           builder: (_) {
-            animate(imageCountStore.imageCount);
             return SelectableText(
-              '${imageCountStore.imageCount}',
+              '4k',
               style: kSubheader.copyWith(
                 foreground: Paint()
                   ..shader = LinearGradient(
