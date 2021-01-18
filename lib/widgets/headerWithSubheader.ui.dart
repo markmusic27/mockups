@@ -15,11 +15,12 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader> {
         children: [
           Text(
             'mockups.li',
+            maxLines: 2,
             style: TextStyle(
               fontFamily: 'Inter',
               color: kTextColor,
               fontSize: 60,
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w700,
             ),
           ),
           SizedBox(height: 20),
