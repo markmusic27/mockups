@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:gradient_ui_widgets/gradient_ui_widgets.dart';
 import 'package:mockups/services/mapGradient.service.dart';
 import 'package:mockups/state/imageCount.store.dart';
 import 'package:mockups/widgets/subheader.ui.dart';
@@ -67,14 +68,9 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader>
 
               pointer = imageCountStore.imageCount;
 
-              return SelectableText(
+              return GradientText(
                 'mockups.li',
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  color: colors[1],
-                  fontSize: 60,
-                  fontWeight: FontWeight.w700,
-                ),
+                gradient: LinearGradient(colors: colors),
               );
             },
           ),
