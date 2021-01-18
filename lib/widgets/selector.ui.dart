@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:mockups/services/image.service.dart';
-import 'package:mockups/state/imageCount_store.dart';
+import 'package:mockups/state/imageCount.store.dart';
 import 'package:mockups/widgets/imageContainer.ui.dart';
+import 'package:provider/provider.dart';
 
 class Selector extends StatefulWidget {
   @override
@@ -10,10 +11,9 @@ class Selector extends StatefulWidget {
 }
 
 class _SelectorState extends State<Selector> {
-  final ImagecountStore imagecountStore = ImagecountStore();
-
   @override
   Widget build(BuildContext context) {
+    final imageCountStore = Provider.of<ImageCountStore>(context);
     ImageService imageService = ImageService();
     return Expanded(
       child: Container(
@@ -21,7 +21,7 @@ class _SelectorState extends State<Selector> {
         child: Swiper(
           control: SwiperControl(
             onTap: () {
-              imagecountStore.increment();
+              imageCountStore.increase();
             },
             size: 30,
             iconNext: Icons.arrow_forward_ios_rounded,
