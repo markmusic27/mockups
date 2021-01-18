@@ -23,8 +23,10 @@ class TopIconWithText extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/${type == Type.octocat ? 'octocat' : 'fullscreen'}.png',
+            Image.network(
+              type == Type.overlay
+                  ? "https://i.ibb.co/jDbZ12n/full-Screen.png"
+                  : "https://i.ibb.co/vj7JnJD/octocat.png",
               height: 23,
             ),
             SizedBox(

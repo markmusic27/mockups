@@ -8,7 +8,7 @@ class TopButtons extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TopIconWithText(type: Type.octocat),
+          TopIconWithText(type: Type.overlay),
           SizedBox(width: 45),
           TopIconWithText(type: Type.octocat),
         ],
