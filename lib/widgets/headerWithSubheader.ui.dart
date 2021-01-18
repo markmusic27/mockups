@@ -13,14 +13,19 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader> {
     return Container(
       child: Column(
         children: [
-          Text(
-            'mockups.li',
-            maxLines: 2,
-            style: TextStyle(
-              fontFamily: 'Inter',
-              color: kTextColor,
-              fontSize: 58,
-              fontWeight: FontWeight.w700,
+          Container(
+            width: 320,
+            child: Center(
+              child: Text(
+                'mockups.li',
+                maxLines: 2,
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  color: kTextColor,
+                  fontSize: 58,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
           ),
           SizedBox(height: 20),
