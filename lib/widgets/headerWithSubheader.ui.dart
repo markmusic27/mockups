@@ -17,7 +17,7 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader> {
             width: 320,
             child: Center(
               child: Text(
-                'mockups.li',
+                'mockups',
                 maxLines: 2,
                 style: TextStyle(
                   fontFamily: 'Inter',
