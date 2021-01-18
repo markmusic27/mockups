@@ -14,6 +14,7 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader> {
       child: Column(
         children: [
           Container(
+            color: Colors.white,
             width: 320,
             child: Center(
               child: Text(
