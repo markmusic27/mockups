@@ -19,7 +19,7 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader> {
             style: TextStyle(
               fontFamily: 'Inter',
               color: kTextColor,
-              fontSize: 60,
+              fontSize: 58,
               fontWeight: FontWeight.w700,
             ),
           ),
