@@ -16,8 +16,8 @@ class _HeaderWithSubheaderState extends State<HeaderWithSubheader> {
           Container(
             width: 320,
             child: Center(
-              child: Text(
-                'mockups',
+              child: SelectableText(
+                ' mockups ',
                 maxLines: 2,
                 style: TextStyle(
                   fontFamily: 'Inter',
