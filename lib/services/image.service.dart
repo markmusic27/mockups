@@ -3,8 +3,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ImageService {
   final List<String> _urls = [
-    'https://download1641.mediafire.com/oix8smwj2dqg/5n8uo84sge6ykdl/1.png',
-    'https://download1581.mediafire.com/jwmbwqcqpvxg/si57hvukr84zudg/2.png',
+    'https://drive.google.com/file/d/1_J11d4twcKMbR9IYmgdLwOiiUaGwDva8/view?usp=sharing',
+    'https://drive.google.com/file/d/1eL1_AHsDTGqmZlVpHRNopi99tWk_9Ui-/view?usp=sharing',
+    "https://drive.google.com/file/d/1EW43NFNVrKtIYDZtv8m8Pio61Ms5JiQ1/view?usp=sharing"
   ];
 
   int get length => _urls.length;
